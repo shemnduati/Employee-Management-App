@@ -7,8 +7,8 @@
          <h1 class="h3 mb-0 text-gray-800">Users</h1>                 
     </div>
     <!-- Content Row -->
-    <div class="row">
-        <div class="card mx-auto">
+    <div class="row justify-content-center">
+        <div class="card  col-md-8">
             <div class="card-header">
                <h3>Create Users</h3>
             </div>
