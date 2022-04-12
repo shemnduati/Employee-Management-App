@@ -24,7 +24,23 @@
         @endif
         </div>
         <div class="card-header">
-            <a href="{{ route('users.create')}}" class=" float-right btn btn-primary">Create</a>
+            <div class="row">
+                <div class="col">
+                    <form method="GET" action="{{ route('users.index')}}">
+                        <div class="form-row align-items-center">
+                         <div class="col">
+                            <input type="search" name="search" class="form-control" id="search" placeholder="Search">     
+                        </div>
+                        <div class="col">
+                         <button type="submit" class="btn btn-primary">Search</button>    
+                        </div>    
+                        </div> 
+                    </form>
+                </div>
+                <div class="col">
+                    <a href="{{ route('users.create') }}" class="btn btn-primary float-right">Add User</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -56,6 +72,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
     </div>
     </div>
 @endsection
