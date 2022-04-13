@@ -96,6 +96,18 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Country</span></a>
             </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('states.index')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>States</span></a>
+            </li>
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ route('cities.index')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>City</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \App\Models\Country;
-use App\Http\Requests\CountryStoreRequest;
+use \App\Models\State;
+use App\Http\Requests\StateStoreRequest;
 
-class CountryController extends Controller
+class StatesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
-        return view('countries.index', compact('countries'));
+        $states = State::all();
+        return view('states.index', compact('states'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('countries.create');
+        return view('states.create');
     }
 
     /**
@@ -36,10 +36,10 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryStoreRequest $request)
+    public function store(StateStoreRequest $request)
     {
-        Country::create($request->validated());
-        return redirect()->route('countries.index')->with('message', 'Country created successfully');
+        State::create($request->validated());
+        return redirect()->route('states.index')->with('message', 'State created successfully');
     }
 
     /**
@@ -59,10 +59,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(State $state)
     {
-        $countries = Country::all();
-        return view('countries.edit', compact('country'));
+        $states = State::all();
+        return view('states.edit', compact('state'));
     }
 
     /**
@@ -72,11 +72,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, State $state)
     {
         $country->update([
-            'country_name' =>$request->country_name,
-            'country_code' =>$request->country_code,
+            'state_name' =>$request->state_name,
         ]);
         return redirect()->route('countries.index')->with('message', 'Country updated successfully');
     }
@@ -87,9 +86,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(State $state)
     {
-        $country->delete();
-        return redirect()->route('countries.index')->with('message','Country has been deleted successfully');
+        $state->delete();
+        return redirect()->route('states.index')->with('message','States has been deleted successfully');
     }
 }

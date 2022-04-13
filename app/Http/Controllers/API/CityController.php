@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \App\Models\Country;
-use App\Http\Requests\CountryStoreRequest;
+use \App\Models\City;
+use App\Http\Requests\CityStoreRequest;
 
-class CountryController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
-        return view('countries.index', compact('countries'));
+        $cities = City::all();
+        return view('cities.index', compact('cities'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('countries.create');
+        return view('states.create');
     }
 
     /**
@@ -36,10 +36,10 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryStoreRequest $request)
+    public function store(CityStoreRequest $request)
     {
-        Country::create($request->validated());
-        return redirect()->route('countries.index')->with('message', 'Country created successfully');
+        City::create($request->validated());
+        return redirect()->route('cities.index')->with('message', 'City created successfully');
     }
 
     /**
@@ -59,10 +59,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(City $city)
     {
-        $countries = Country::all();
-        return view('countries.edit', compact('country'));
+        $cities = City::all();
+        return view('cities.edit', compact('city'));
     }
 
     /**
@@ -72,13 +72,12 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, City $city)
     {
         $country->update([
-            'country_name' =>$request->country_name,
-            'country_code' =>$request->country_code,
+            'city_name' =>$request->city_name,
         ]);
-        return redirect()->route('countries.index')->with('message', 'Country updated successfully');
+        return redirect()->route('cities.index')->with('message', 'City updated successfully');
     }
 
     /**
@@ -87,9 +86,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(City $city)
     {
-        $country->delete();
-        return redirect()->route('countries.index')->with('message','Country has been deleted successfully');
+        $city->delete();
+        return redirect()->route('cities.index')->with('message','City has been deleted successfully');
     }
 }
