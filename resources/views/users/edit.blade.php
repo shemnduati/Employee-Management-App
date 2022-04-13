@@ -67,13 +67,13 @@
                     <div class="card-header">{{ __('Change Password') }}</div>
     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.change.password') }}">
+                        <form method="POST" action="{{ route('users.change.password', $user->id) }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
