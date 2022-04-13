@@ -90,6 +90,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Users</span></a>
             </li>
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ route('countries.index')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Country</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

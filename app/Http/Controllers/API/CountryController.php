@@ -4,25 +4,20 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use \App\Models\Country;
+use App\Http\Requests\CountryStoreRequest;
 
-class ChangePasswordController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function change_password(Request $request, User $user)
+    public function index()
     {
-        $request->validate([
-            'password' => ['required','string','min:8','confirmed'],
-        ]);
-        $user->update([
-            'password' => Hash::make($request->password)
-        ]);
-            return redirect()->route('users.index')->with('message', 'User Password updated successfully');
+        $countries = Country::all();
+        return view('countries.index', compact('countries'));
     }
 
     /**
@@ -32,7 +27,7 @@ class ChangePasswordController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.create');
     }
 
     /**
@@ -41,9 +36,10 @@ class ChangePasswordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryStoreRequest $request)
     {
-        //
+        Country::create($request->validated());
+        return redirect()->route('countries.index')->with('message', 'Country created successfully');
     }
 
     /**
