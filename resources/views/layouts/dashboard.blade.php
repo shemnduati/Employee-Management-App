@@ -108,6 +108,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>City</span></a>
             </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('departments.index')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Department</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
@@ -182,7 +188,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; shem Nduati 2022</span>
                     </div>
                 </div>
             </footer>

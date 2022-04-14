@@ -48,6 +48,8 @@
                     <thead>
                         <tr>
                             <th>#id</th>
+                            <th>Country Code</th>
+                            <th>Country Name</th>
                             <th>State Name</th>
                             <th>Action</th>
                         </tr>
@@ -56,6 +58,8 @@
                         @foreach ($states as $state)
                             <tr>
                                 <td>{{  $state->id }}</td>
+                                <td>{{  $state->country->country_code}}</td>
+                                <td>{{  $state->country->country_name}}</td>
                                 <td>{{ $state->state_name }}</td>
                                 <td>
                                     <a href="{{ route('states.edit',  $state->id)}}" class="btn btn-primary">Edit</a>

@@ -11,6 +11,7 @@
         <div class="card  col-md-8">
             <div class="card-header">
                <h3>Create Country</h3>
+               <a href="{{ route('countries.index') }}" class="float-right">Back</a>
             </div>
             <div class="card-body">
                 <form action="{{ route('countries.store')}}" method="post">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Models\State;
+use \App\Models\Country;
 use App\Http\Requests\StateStoreRequest;
 
 class StatesController extends Controller
@@ -14,9 +15,12 @@ class StatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $states = State::all();
+        if($request->has('search')){
+            $states = State::where('state_name', 'like', '%'.$request->search.'%')->paginate(10);
+           }
         return view('states.index', compact('states'));
     }
 
@@ -27,7 +31,8 @@ class StatesController extends Controller
      */
     public function create()
     {
-        return view('states.create');
+        $countries = Country::all();
+        return view('states.create',compact('countries'));
     }
 
     /**
@@ -61,8 +66,8 @@ class StatesController extends Controller
      */
     public function edit(State $state)
     {
-        $states = State::all();
-        return view('states.edit', compact('state'));
+        $countries = Country::all();
+        return view('states.edit', compact('state','countries'));
     }
 
     /**
@@ -74,10 +79,11 @@ class StatesController extends Controller
      */
     public function update(Request $request, State $state)
     {
-        $country->update([
+        $state->update([
+            'country_id' => $request->country_id,
             'state_name' =>$request->state_name,
         ]);
-        return redirect()->route('countries.index')->with('message', 'Country updated successfully');
+        return redirect()->route('states.index')->with('message', 'State updated successfully');
     }
 
     /**

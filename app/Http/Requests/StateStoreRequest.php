@@ -24,6 +24,7 @@ class StateStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'country_id' => 'required',
             'state_name' => 'required|string|max:255',
         ];
     }

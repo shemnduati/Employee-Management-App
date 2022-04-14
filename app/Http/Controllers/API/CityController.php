@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Models\City;
+use \App\Models\State;
 use App\Http\Requests\CityStoreRequest;
 
 class CityController extends Controller
@@ -14,9 +15,12 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $cities = City::all();
+        if($request->has('search')){
+            $cities = City::where('city_name', 'like', '%'.$request->search.'%')->paginate(10);
+           }
         return view('cities.index', compact('cities'));
     }
 
@@ -25,9 +29,10 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(City $city)
     {
-        return view('states.create');
+        $states = State::all();
+        return view('cities.create',compact('city','states'));
     }
 
     /**
@@ -61,8 +66,8 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        $cities = City::all();
-        return view('cities.edit', compact('city'));
+        $states = State::all();
+        return view('cities.edit', compact('city','states'));
     }
 
     /**
@@ -74,7 +79,8 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        $country->update([
+        $city->update([
+            'state_id' => $request->state_id,
             'city_name' =>$request->city_name,
         ]);
         return redirect()->route('cities.index')->with('message', 'City updated successfully');

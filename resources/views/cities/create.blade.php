@@ -16,14 +16,34 @@
                 <form action="{{ route('cities.store')}}" method="post">
                     @csrf
                 
-                    <div class="form-group">
-                        <label for="city_name">City Name</label>
-                        <input type="text" name="city_name" id="city_name" class="form-control @error('city_name') is-invalid @enderror" name="city_name" value="{{ old('city_name') }}" required autocomplete="city_name" autofocus>
+                    <div class="form-group row">
+                        <label for="state_id" class="col-md-4 col-form-label text-md-right">City</label>
+                        <div class="col-md-6">
+                            <select name="state_id" id="state_id" class="form-control @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id') }}" required autocomplete="state_id" autofocus>
+                                <option value="">Select State</option>
+                                @foreach ($states as $state)
+                                    <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('state_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                             @enderror
+                         
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="city_name" class="col-md-4 col-form-label text-md-right">State Name</label>
+                        <div class="col-md-6">
+                            <input type="text" name="city_name" id="city_name" class="form-control @error('city_name') is-invalid @enderror" name="city_name" value="{{ old('city_name') }}" required autocomplete="city_name" autofocus>
                         @error('city_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                        </div>
+                        
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Submit</button>

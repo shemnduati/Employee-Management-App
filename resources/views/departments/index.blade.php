@@ -4,7 +4,7 @@
 
      <!-- Page Heading -->
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-         <h1 class="h3 mb-0 text-gray-800">Cities</h1>                 
+         <h1 class="h3 mb-0 text-gray-800">Departments</h1>                 
     </div>
     <!-- Content Row -->
     <div class="row">
@@ -26,7 +26,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <form method="GET" action="{{ route('cities.index')}}">
+                    <form method="GET" action="{{ route('departments.index')}}">
                         <div class="form-row align-items-center">
                          <div class="col">
                             <input type="search" name="search" class="form-control" id="search" placeholder="Search">     
@@ -38,7 +38,7 @@
                     </form>
                 </div>
                 <div class="col">
-                    <a href="{{ route('cities.create') }}" class="btn btn-primary float-right">Add City</a>
+                    <a href="{{ route('departments.create') }}" class="btn btn-primary float-right">Add State</a>
                 </div>
             </div>
         </div>
@@ -48,20 +48,18 @@
                     <thead>
                         <tr>
                             <th>#id</th>
-                            <th>State Name</th>
-                            <th>City Name</th>
+                            <th>Department Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cities as $city)
+                        @foreach ($departments as $department)
                             <tr>
-                                <td>{{  $city->id }}</td>
-                                <td>{{  $city->state->state_name }}</td>
-                                <td>{{ $city->city_name }}</td>
+                                <td>{{  $department->id }}</td>
+                                <td>{{  $department->department_name}}</td>
                                 <td>
-                                    <a href="{{ route('cities.edit',  $city->id)}}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('cities.destroy',  $city->id)}}" method="post" class="d-inline">
+                                    <a href="{{ route('departments.edit',  $department->id)}}" class="btn btn-primary">Edit</a>
+                                    <form action="{{ route('departments.destroy',  $department->id)}}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit">Delete</button>
