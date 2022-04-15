@@ -114,6 +114,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Department</span></a>
             </li>
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="/employees">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Employee Manage</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
